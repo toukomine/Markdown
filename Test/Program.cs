@@ -8,12 +8,13 @@ namespace Test
         static void Main(string[] args)
         {
             string html = new MarkdownBuilder()
-                            .SetTextHelper(new DefaultMarkdownTextHelperImpl())
-                            .SetMarkdownGrammarHelper(new DefaultMarkdownGrammarHelperImpl())
-                            .SetMarkdownToHtmlHelper(new DefaultMarkdownToHtmlHelperImpl())
-                            .SetCssStyle(new DefaultCssStyleImpl("css.css"))
-                            .Builder()
-                            .Process("test.txt");
+                .From("test.txt")
+                .SetTextHelper(new DefaultMarkdownTextHelperImpl())
+                .SetMarkdownGrammarHelper(new DefaultMarkdownGrammarHelperImpl())
+                .SetMarkdownToHtmlHelper(new DefaultMarkdownToHtmlHelperImpl())
+                .SetCssStyle(new DefaultCssStyleImpl("css.css"))
+                .Builder()
+                .ToHtml();
 
             Console.WriteLine(html);
             Console.ReadKey();

@@ -25,6 +25,10 @@ namespace Markdown
         /// 样式实现
         /// </summary>
         public CssStyle CssStyle { get; set; }
+        /// <summary>
+        /// markdown文本或路径
+        /// </summary>
+        public string MarkdownStr { get; set; }
 
         internal MarkdownHelper() { 
             
@@ -35,8 +39,8 @@ namespace Markdown
         /// </summary>
         /// <param name="filePath">markdown文件/路径</param>
         /// <returns>html标签文本</returns>
-        public string Process(string filePath) {
-            var lines = TextHelper.Process(filePath);
+        public string ToHtml() {
+            var lines = TextHelper.Process(MarkdownStr);
             var markdownElements = MarkdownGrammarHelper.Process(lines);
             var htmlTags = MarkdownToHtmlHelper.Process(markdownElements,CssStyle);
 

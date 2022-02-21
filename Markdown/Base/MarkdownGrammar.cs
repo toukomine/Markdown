@@ -146,7 +146,7 @@ namespace Markdown
                     rootElement = GetCodeElement(line);
                     break;
                 default:
-
+                    
                     break;
             }
 

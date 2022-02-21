@@ -22,7 +22,13 @@ namespace Markdown
         {
             StringBuilder htmlTag = new StringBuilder();
             htmlTag.Append(Head);
-            htmlTag.Append(Children.ToString());
+            if (Children != null)
+            {
+                htmlTag.Append(Children.ToString());
+            }
+            else {
+                htmlTag.Append(Content);
+            }
 
             Append(NextQuote, htmlTag);
 

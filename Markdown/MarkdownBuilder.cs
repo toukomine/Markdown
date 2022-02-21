@@ -9,15 +9,20 @@
         private IMarkdownGrammarHelper _markdownGrammarHelper;
         private IMarkdownToHtmlHelper _markdownToHtmlHelper;
         private CssStyle _cssStyle;
+        private string _markdownStr;
 
         /// <summary>
         /// 构造默认的Markdown解析器
         /// </summary>
         public MarkdownBuilder() {
-            _textHelper = new DefaultMarkdownTextHelperImpl();
-            _markdownGrammarHelper = new DefaultMarkdownGrammarHelperImpl();
-            _markdownToHtmlHelper = new DefaultMarkdownToHtmlHelperImpl();
-            _cssStyle = new DefaultCssStyleImpl(string.Empty);
+            
+        }
+
+        public MarkdownBuilder From(string str)
+        {
+            _markdownStr = str;
+
+            return this;
         }
 
         /// <summary>
@@ -79,7 +84,8 @@
                 TextHelper = _textHelper,
                 MarkdownGrammarHelper = _markdownGrammarHelper,
                 MarkdownToHtmlHelper = _markdownToHtmlHelper,
-                CssStyle = _cssStyle
+                CssStyle = _cssStyle,
+                MarkdownStr = _markdownStr
             };
 
             return markdownHelper;
